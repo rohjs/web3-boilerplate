@@ -1,0 +1,20 @@
+{
+  "key": "56",
+  "chainId": 56,
+  "chainName": "Binance Smart Chain",
+  "name": "BNB Smart Chain",
+  "shortName": "Mainnet",
+  "network": "bsc",
+  "explorer": "https://bscscan.com",
+  "explorerName": "BscScan",
+  "nativeCurrency": {
+    "name": "Binance Chain Native Token",
+    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+    "symbol": "BNB",
+    "decimals": 18,
+    "minTransactionBuffer": "0.05"
+  },
+  "addresses": {
+    "wbnb": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c"
+  }
+}

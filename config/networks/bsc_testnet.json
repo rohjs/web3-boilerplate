@@ -1,0 +1,24 @@
+{
+  "key": "97",
+  "chainId": 97,
+  "chainName": "Binance Smart Chain Testnet",
+  "name": "BNB Smart Chain Testnet",
+  "shortName": "BSC Testnet",
+  "network": "bsc",
+  "explorer": "https://testnet.bscscan.com",
+  "explorerName": "BscScan",
+  "nativeCurrency": {
+    "name": "Binance Chain Native Token",
+    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+    "symbol": "tBNB",
+    "decimals": 18,
+    "minTransactionBuffer": "0.05"
+  },
+  "addresses": {
+    "wbnb": "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
+    "usdt": "0x7ef95a0FEE0Dd31b22626fA2e10Ee6A223F8a684",
+    "hotbody": "0xA1F92046c84Bf0067cD2c7aCdaDe986Ec81FC0D6",
+    "cakeLp": "0xb94DD6B38385775e4A4ABDbfb0d16d52e925Bb52",
+    "pancakeRouter": "0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3"
+  }
+}

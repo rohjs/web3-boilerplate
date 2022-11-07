@@ -1,0 +1,100 @@
+import { configureChains, createClient } from "wagmi"
+import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet"
+import { InjectedConnector } from "wagmi/connectors/injected"
+import { MetaMaskConnector } from "wagmi/connectors/metaMask"
+import { WalletConnectConnector } from "wagmi/connectors/walletConnect"
+import { jsonRpcProvider } from "wagmi/providers/jsonRpc"
+
+import { bsc, bscTest, goerli, mainnet } from "config/chains"
+import { BinanceWalletConnector } from "./connectors/binanceWallet"
+
+const CHAINS = [mainnet, goerli, bsc, bscTest]
+
+export const { provider, chains } = configureChains(CHAINS, [
+  jsonRpcProvider({
+    rpc(chain) {
+      return nodeRealUrlFor(chain.network) || { http: chain.rpcUrls.default }
+    },
+  }),
+])
+
+export const injectedConnector = new InjectedConnector({
+  chains,
+  options: {
+    shimDisconnect: false,
+    shimChainChangedDisconnect: true,
+  },
+})
+
+export const coinbaseConnector = new CoinbaseWalletConnector({
+  chains,
+  options: {
+    appName: "Launchpad",
+  },
+})
+
+export const walletConnectConnector = new WalletConnectConnector({
+  chains,
+  options: {
+    qrcode: true,
+  },
+})
+
+export const walletConnectNoQrCodeConnector = new WalletConnectConnector({
+  chains,
+  options: {
+    qrcode: false,
+  },
+})
+
+export const metaMaskConnector = new MetaMaskConnector({
+  chains,
+  options: {
+    shimDisconnect: false,
+    shimChainChangedDisconnect: true,
+  },
+})
+
+export const bscConnector = new BinanceWalletConnector({ chains })
+
+export const client = createClient({
+  autoConnect: true,
+  provider,
+  connectors: [
+    metaMaskConnector,
+    injectedConnector,
+    coinbaseConnector,
+    walletConnectConnector,
+    bscConnector,
+  ],
+})
+
+function nodeRealUrlFor(networkName: string) {
+  let host = null
+
+  switch (networkName) {
+    case "homestead":
+      if (process.env.NEXT_PUBLIC_NODE_REAL_API_ETH) {
+        host = `eth-mainnet.nodereal.io/v1/${process.env.NEXT_PUBLIC_NODE_REAL_API_ETH}`
+      }
+      break
+    case "goerli":
+      if (process.env.NEXT_PUBLIC_NODE_REAL_API_GOERLI) {
+        host = `eth-goerli.nodereal.io/v1/${process.env.NEXT_PUBLIC_NODE_REAL_API_GOERLI}`
+      }
+      break
+    default:
+      host = null
+  }
+
+  if (!host) return null
+
+  const url = `https://${host}`
+
+  return {
+    http: url,
+    webSocket: url
+      .replace(/^http/i, "wss")
+      .replace(".nodereal.io/v1", ".nodereal.io/ws/v1"),
+  }
+}
