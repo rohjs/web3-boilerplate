@@ -18,9 +18,11 @@
     "eslint-config-next": "13.0.2",
     "ethers": "^5.7.2",
     "hex-rgb": "^5.0.0",
+    "jotai": "^1.9.1",
     "next": "13.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-use": "^17.4.0",
     "styled-components": "^5.3.6",
     "typescript": "4.8.4",
     "wagmi": "^0.7.13"
