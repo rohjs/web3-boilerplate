@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components"
 
 import { fontFamily } from "./constants/typography"
+import { generateHexVariables, generateRgbVariables } from "./utils"
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -13,8 +14,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-    --white: #ffffff;
-    --black: #000000;
+    ${generateHexVariables()};
+    ${generateRgbVariables()};
   }
 
   html {
@@ -23,6 +24,8 @@ const GlobalStyle = createGlobalStyle`
     overflow: hidden;
     font-size: 16px;
     font-family: ${fontFamily.text};
+    background-color: var(--primary-900);
+    color: var(--white);
   }
 
   body {
