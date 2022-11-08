@@ -18,12 +18,14 @@ export function Account() {
 
   return (
     <StyledAccount>
-      <header>
+      <h2 className="title">Connected w/ {connector?.name}:</h2>
+
+      <div className="account">
         <Jazzicon address={account} diameter={40} />
         <strong>{truncateAddress(account)}</strong>
-      </header>
+      </div>
 
-      <Button onClick={disconnect} $size="md">
+      <Button onClick={disconnect} $variant="tiny">
         Disconnect
       </Button>
     </StyledAccount>

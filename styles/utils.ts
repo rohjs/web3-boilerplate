@@ -15,6 +15,13 @@ import {
 import type { TextStyle } from "./constants/typography"
 import { assertUnreachable } from "utils/assertUnreachable"
 
+function hexToRgba(value: string) {
+  return hexRgb(value, { format: "css" })
+    .replace(/rgb|\(|\)/g, "")
+    .split(" ")
+    .join(",")
+}
+
 // NOTE: Global variables
 export function generateHexVariables() {
   return Object.entries(colors).map(([key, scales]) => {
@@ -25,16 +32,9 @@ export function generateHexVariables() {
   })
 }
 
-function hexToRgba(value: string) {
-  return hexRgb(value, { format: "css" })
-    .replace(/rgb|\(|\)/g, "")
-    .split(" ")
-    .join(",")
-}
-
 export function generateRgbVariables() {
   return Object.entries(colors).map(([key, scales]) => {
-    if (typeof scales === "string") return `--${key}-rgb: ${scales};`
+    if (typeof scales === "string") return `--${key}-rgb: ${hexToRgba(scales)};`
     return Object.entries(scales).map(
       ([scale, value]) => `--${key}-${scale}-rgb: ${hexToRgba(value)};`
     )
@@ -90,7 +90,7 @@ export function textStyle(type: TextStyle, level?: any) {
   }
 }
 
-type FlexboxValueOriginal =
+type FlexboxValue =
   | "center"
   | "flex-end"
   | "flex-start"
@@ -98,47 +98,14 @@ type FlexboxValueOriginal =
   | "space-between"
   | "stretch"
 
-type FlexboxValueAbbreviation =
-  | "center"
-  | "end"
-  | "start"
-  | "around"
-  | "between"
-  | "stretch"
-
-type FlexboxValue = FlexboxValueOriginal | FlexboxValueAbbreviation
-
-function flexValue(value: FlexboxValue) {
-  switch (value) {
-    case "center":
-      return "center"
-    case "end":
-    case "flex-end":
-      return "flex-end"
-    case "start":
-    case "flex-start":
-      return "flex-start"
-    case "around":
-    case "space-around":
-      return "space-around"
-    case "between":
-    case "space-between":
-      return "space-between"
-    case "stretch":
-      return "stretch"
-    default:
-      assertUnreachable(value)
-  }
-}
-
 export function flexbox(
   jc: FlexboxValue = "center",
   ai: FlexboxValue = "center"
 ) {
   return css`
     display: flex;
-    align-items: ${flexValue(ai)};
-    justify-content: ${flexValue(jc)};
+    align-items: ${ai};
+    justify-content: ${jc};
   `
 }
 
@@ -148,8 +115,8 @@ export function inlineFlexbox(
 ) {
   return css`
     display: inline-flex;
-    justify-content: ${flexValue(jc)};
-    align-items: ${flexValue(ai)};
+    justify-content: ${jc};
+    align-items: ${ai};
   `
 }
 
@@ -195,6 +162,31 @@ export function imageContainer(_width: string | number) {
       width: 100% !important;
       position: relative !important;
       height: unset !important;
+    }
+  `
+}
+
+export function scrollbar(width = 6) {
+  return css`
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      display: block;
+      width: ${width}px;
+      background-color: rgba(0, 0, 0, 0);
+    }
+
+    &::-webkit-scrollbar-button {
+      display: none;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: rgba(0, 0, 0, 0);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(var(--white-rgb), 0.8);
+      border-radius: 8px;
     }
   `
 }

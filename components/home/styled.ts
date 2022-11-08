@@ -3,14 +3,24 @@ import styled from "styled-components"
 import { flexbox, textStyle } from "styles/utils"
 
 export const StyledAccount = styled.div`
-  header {
-    ${flexbox()}
-    margin-bottom: 40px;
+  padding: 30px;
+  background-color: rgba(var(--primary-50-rgb), 0.1);
+  border-radius: 8px;
+
+  h2 {
+    ${textStyle("body", 4)}
+    margin-bottom: 24px;
+    text-align: center;
   }
 
-  strong {
-    ${textStyle("subtitle", 1)}
-    margin-left: 16px;
+  .account {
+    ${flexbox()}
+    margin-bottom: 30px;
+
+    strong {
+      ${textStyle("subtitle", 1)}
+      margin-left: 16px;
+    }
   }
 `
 
@@ -52,5 +62,26 @@ export const StyledHomePage = styled.div`
 
   button {
     width: 400px;
+  }
+`
+
+export const StyledSample = styled.section`
+  margin-top: 50px;
+
+  .hash {
+    ${textStyle("body", 4)}
+    display: block;
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .buttonGroup {
+    button {
+      margin-top: 20px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
   }
 `

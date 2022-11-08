@@ -1,5 +1,7 @@
+import Link from "next/link"
 import styled, { css } from "styled-components"
 
+import { assertUnreachable } from "utils/assertUnreachable"
 import { flexbox, gradient, inlineFlexbox, textStyle } from "styles/utils"
 
 export type ButtonSize = "sm" | "md" | "lg"
@@ -20,6 +22,7 @@ export type StyledButtonProps = {
 export const buttonStyle = css`
   ${flexbox()}
   position: relative;
+  isolation: isolate;
   overflow: hidden;
   cursor: pointer;
   transition: 500ms;
@@ -51,6 +54,25 @@ export const buttonStyle = css`
     background-position: center center;
     background-size: 100% 100%;
   }
+
+  .leftIcon,
+  .rightIcon,
+  .label {
+    position: relative;
+  }
+
+  .leftIcon,
+  .rightIcon {
+    flex-shrink: 0;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .label {
+    flex-grow: 1;
+    text-align: center;
+    white-space: nowrap;
+  }
 `
 
 // NOTE: Button variants
@@ -71,7 +93,7 @@ export const primaryButtonStyle = css`
 `
 
 export const secondaryButtonStyle = css`
-  color: var(--primary-700);
+  color: var(--primary-600);
   background-color: var(--primary-50);
 
   &:disabled,
@@ -82,6 +104,7 @@ export const secondaryButtonStyle = css`
 
   &::before {
     background-image: ${gradient(3)};
+    border-radius: 8px;
     content: "";
   }
 `
@@ -113,7 +136,7 @@ export const tinyButtonStyle = css`
   width: auto;
   padding: 8px 16px;
   color: var(--white);
-  background-color: rgba(var(--white-rgb), 0.1);
+  background-color: rgba(var(--white-rgb), 0.1) !important;
   border-radius: 100px;
 `
 
@@ -181,36 +204,50 @@ export const smButtonStyle = css`
   }
 `
 
-export const StyledButton = styled.div<StyledButtonProps>`
+function buttonVariantStyle($variant: ButtonVariant) {
+  switch ($variant) {
+    case "primary":
+      return primaryButtonStyle
+    case "secondary":
+      return secondaryButtonStyle
+    case "tertiary":
+      return tertiaryButtonStyle
+    case "text":
+      return textButtonStyle
+    case "tiny":
+      return tinyButtonStyle
+    default:
+      assertUnreachable($variant)
+  }
+}
+
+function buttonSizeStyle($size?: ButtonSize) {
+  if (!$size) return
+
+  switch ($size) {
+    case "lg":
+      return lgButtonStyle
+    case "md":
+      return mdButtonStyle
+    case "sm":
+      return smButtonStyle
+    default:
+      assertUnreachable($size)
+  }
+}
+
+export const StyledButton = styled.button<StyledButtonProps>`
   ${buttonStyle}
   width: ${({ $contain }) => ($contain ? "auto" : "100%")};
 
-  .leftIcon,
-  .rightIcon,
-  .label {
-    position: relative;
-  }
+  ${({ $variant }) => buttonVariantStyle($variant)}
+  ${({ $size }) => buttonSizeStyle($size)}
+`
 
-  .leftIcon,
-  .rightIcon {
-    flex-shrink: 0;
-    pointer-events: none;
-    user-select: none;
-  }
+export const StyledLink = styled(Link)<StyledButtonProps>`
+  ${buttonStyle}
+  width: ${({ $contain }) => ($contain ? "auto" : "100%")};
 
-  .label {
-    flex-grow: 1;
-    text-align: center;
-    white-space: nowrap;
-  }
-
-  ${({ $variant }) => $variant === "primary" && primaryButtonStyle}
-  ${({ $variant }) => $variant === "secondary" && secondaryButtonStyle}
-  ${({ $variant }) => $variant === "tertiary" && tertiaryButtonStyle}
-  ${({ $variant }) => $variant === "text" && textButtonStyle}
-  ${({ $variant }) => $variant === "tiny" && tinyButtonStyle}
-
-  ${({ $size }) => $size === "lg" && lgButtonStyle}
-  ${({ $size }) => $size === "md" && mdButtonStyle}
-  ${({ $size }) => $size === "sm" && smButtonStyle}
+  ${({ $variant }) => buttonVariantStyle($variant)}
+  ${({ $size }) => buttonSizeStyle($size)}
 `
