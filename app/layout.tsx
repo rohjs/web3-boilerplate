@@ -16,7 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <div style={{ background: 'black', color: 'white' }}>Gnb</div>
+
         <ReactQueryProvider>{children}</ReactQueryProvider>
+
+        <div style={{ background: 'black', color: 'white' }}>Footer</div>
       </body>
     </html>
   )
