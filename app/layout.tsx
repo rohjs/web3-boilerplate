@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import ReactQueryProvider from 'lib/providers/react-query-provider'
+import Providers from 'lib/providers'
 
 // TODO: SEO
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ export default function RootLayout({
       <body>
         <div style={{ background: 'black', color: 'white' }}>Gnb</div>
 
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <Providers>{children}</Providers>
 
         <div style={{ background: 'black', color: 'white' }}>Footer</div>
       </body>

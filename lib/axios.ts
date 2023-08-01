@@ -1,9 +1,11 @@
 import axios from 'axios'
 import memoize from 'memoize-one'
 
+import { baseUrls } from 'config/api'
+
 const axiosInstance = memoize(() =>
   axios.create({
-    baseURL: process.env.BACKEND_API_HOSTNAME,
+    baseURL: baseUrls.server,
     timeout: 20 * 1_000,
   })
 )()
