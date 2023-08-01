@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 
 import Providers from 'lib/providers'
+import StyledComponentsRegistry from 'lib/styled-components-registry'
+import GlobalStyle from 'styles/global-style'
 
 // TODO: SEO
 export const metadata: Metadata = {
@@ -16,11 +18,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div style={{ background: 'black', color: 'white' }}>Gnb</div>
+        <StyledComponentsRegistry>
+          <GlobalStyle />
+          <div style={{ background: 'black', color: 'white' }}>Gnb</div>
 
-        <Providers>{children}</Providers>
+          <Providers>{children}</Providers>
 
-        <div style={{ background: 'black', color: 'white' }}>Footer</div>
+          <div style={{ background: 'black', color: 'white' }}>Footer</div>
+        </StyledComponentsRegistry>
       </body>
     </html>
   )
