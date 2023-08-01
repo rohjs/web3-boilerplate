@@ -30,7 +30,7 @@ export const walletConnectConnector = new WalletConnectConnector({
       name: config.appName,
       description: config.appDescription,
       url: config.baseUrl,
-      icons: ['https://wagmi.sh/icon.png'], // FIXME: 아이콘 교체
+      icons: ['https://wagmi.sh/icon.png'], // FIXME: Change icon
     },
   },
 })

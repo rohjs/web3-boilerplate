@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 
 import Providers from 'lib/providers'
-import StyledComponentsRegistry from 'lib/styled-components-registry'
+import StyledComponentsRegistry from 'lib/StyledComponentsRegistery'
 import GlobalStyle from 'styles/global-style'
+import 'styles/globals.css'
 
 // TODO: SEO
 export const metadata: Metadata = {
