@@ -1,8 +1,12 @@
 /** @type {import('tailwindcss').Config} */
-const preset = require('./styles/preset')
+const preset = require('./config/tailwindcss-preset')
 
 module.exports = {
-  content: ['./**/*.{js,jsx,ts,tsx}'],
+  content: [
+    './app/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
   presets: [preset],
   plugins: [],
 }

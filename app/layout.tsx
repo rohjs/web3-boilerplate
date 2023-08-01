@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 import Providers from 'lib/providers'
 import StyledComponentsRegistry from 'lib/StyledComponentsRegistery'
-import GlobalStyle from 'styles/global-style'
+import GlobalStyles from 'styles/GlobalStyles'
 import 'styles/globals.css'
 
 // TODO: SEO
@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <StyledComponentsRegistry>
-          <GlobalStyle />
+          <GlobalStyles />
           <div style={{ background: 'black', color: 'white' }}>Gnb</div>
 
           <Providers>{children}</Providers>

@@ -30,3 +30,10 @@ type ChainConfig = {
 }
 
 type Hash = `0x${string}`
+
+type TokenInfo = {
+  readonly address: Hash
+  readonly decimals: name
+  readonly name: string
+  readonly symbol: string
+}
