@@ -3,7 +3,7 @@ import {
   coinbaseWalletConfig,
   metamaskWalletConfig,
   trustWalletConfig,
-  walletConnectWalletConfig,
+  // walletConnectWalletConfig,
 } from './config'
 
 type WalletParams = {
@@ -15,7 +15,7 @@ const walletConfigs = (_: WalletParams): WalletConfig[] => {
   return [
     metamaskWalletConfig,
     coinbaseWalletConfig,
-    walletConnectWalletConfig,
+    // walletConnectWalletConfig,
     trustWalletConfig,
     binanceWalletConfig,
   ]

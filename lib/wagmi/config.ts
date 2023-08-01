@@ -7,7 +7,7 @@ import {
   injectedConnector,
   metaMaskConnector,
   trustWalletConnector,
-  walletConnectConnector,
+  // walletConnectConnector,
 } from './connectors'
 
 export default createConfig({
@@ -19,7 +19,7 @@ export default createConfig({
   connectors: [
     metaMaskConnector,
     coinbaseConnector,
-    walletConnectConnector,
+    // walletConnectConnector,
     trustWalletConnector,
     // bscConnector,
     injectedConnector,

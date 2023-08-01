@@ -22,18 +22,20 @@ export const coinbaseConnector = new CoinbaseWalletConnector({
   },
 })
 
-export const walletConnectConnector = new WalletConnectConnector({
-  chains,
-  options: {
-    projectId: config.walletConnectProjectId ?? '#',
-    metadata: {
-      name: config.appName,
-      description: config.appDescription,
-      url: config.baseUrl,
-      icons: ['https://wagmi.sh/icon.png'], // FIXME: Change icon
-    },
-  },
-})
+export const walletConnectConnector = config.walletConnectProjectId
+  ? new WalletConnectConnector({
+      chains,
+      options: {
+        projectId: config.walletConnectProjectId ?? '#',
+        metadata: {
+          name: config.appName,
+          description: config.appDescription,
+          url: config.baseUrl,
+          icons: ['https://wagmi.sh/icon.png'], // FIXME: Change icon
+        },
+      },
+    })
+  : null
 
 export const metaMaskConnector = new MetaMaskConnector({
   chains,
