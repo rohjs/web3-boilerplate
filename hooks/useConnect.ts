@@ -63,6 +63,7 @@ export function useConnect() {
   const openConnectModal = useCallback(() => {
     addModal({
       type: ModalType.Connect,
+      props: {},
     })
   }, [addModal])
 
