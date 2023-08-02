@@ -1,10 +1,15 @@
 'use client'
 
-import { useAccount, useMediaQuery } from '@/hooks'
+import wagmiConfig from 'lib/wagmi/config'
+import { useAccount, useMediaQuery, useMount } from 'hooks'
 
 export default function Effects() {
   useAccount()
   useMediaQuery()
+
+  useMount(() => {
+    wagmiConfig.autoConnect()
+  })
 
   return null
 }
