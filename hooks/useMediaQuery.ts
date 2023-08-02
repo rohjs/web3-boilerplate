@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useMemo } from 'react'
+'use client'
 
+import { useCallback, useEffect, useMemo } from 'react'
 import { useSetAtom } from 'jotai'
 
 import { breakpointAtom } from 'states/ui'

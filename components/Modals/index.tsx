@@ -1,3 +1,5 @@
+'use client'
+
 import { MouseEvent, useMemo } from 'react'
 import { useKey } from 'react-use'
 import { useAtomValue } from 'jotai'
