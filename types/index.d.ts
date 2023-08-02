@@ -31,7 +31,15 @@ type ChainConfig = {
   subgraph?: string
 }
 
+type ConnectorIconType = import('components/Icons/types').ConnectorIconType
+
 type Hash = `0x${string}`
+
+type IconType = import('components/Icons/types').IconType
+
+type IconSize = import('components/Icons/types').IconSize
+
+type LogoIconType = import('components/Icons/types').LogoIconType
 
 type ModalType = import('config/constants').ModalType
 
