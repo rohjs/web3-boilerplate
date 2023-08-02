@@ -30,6 +30,8 @@ type ConnectionStatus =
 
 type ConnectFn = (args?: Partial<ConnectArgs>) => void
 
+type ConnectorId = import('config/constants').ConnectorId
+
 type WriteAsyncFn = (
   overrideConfig?: WriteContractArgs<Abi, string>
 ) => Promise<SendTransactionResult>

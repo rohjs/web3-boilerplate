@@ -1,3 +1,5 @@
+type Breakpoint = import('config/constants').Breakpoint
+
 type Chain = import('wagmi').Chain
 
 type ChainId = import('config/chains').ChainId
@@ -30,6 +32,8 @@ type ChainConfig = {
 }
 
 type Hash = `0x${string}`
+
+type ModalType = import('config/constants').ModalType
 
 type TokenInfo = {
   readonly address: Hash

@@ -4,6 +4,7 @@ export const Breakpoint = {
   smLaptop: 1080,
   laptop: 1366,
   desktop: 1600,
+  wide: 1920,
 } as const
 
 export type Breakpoint = keyof typeof Breakpoint

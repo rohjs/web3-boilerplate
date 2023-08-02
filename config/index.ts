@@ -1,4 +1,5 @@
 // TODO: Update config
+import { ChainId } from './chains'
 
 class ConfigService {
   get assetPlatform() {
@@ -15,6 +16,10 @@ class ConfigService {
 
   get baseUrl() {
     return process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000'
+  }
+
+  get chainId() {
+    return this.env === 'production' ? ChainId.BSC : ChainId.BSC_TESTNET
   }
 
   get domain() {
