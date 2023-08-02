@@ -1,3 +1,5 @@
+type BigNumber = import('bignumber.js')
+
 type Breakpoint = import('config/constants').Breakpoint
 
 type Chain = import('wagmi').Chain
@@ -42,6 +44,8 @@ type IconSize = import('components/Icons/types').IconSize
 type LogoIconType = import('components/Icons/types').LogoIconType
 
 type ModalType = import('config/constants').ModalType
+
+type NumericValueType = 'token' | 'fiat' | 'percent'
 
 type TokenInfo = {
   readonly address: Hash
