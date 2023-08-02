@@ -2,6 +2,10 @@ type BigNumber = import('bignumber.js')
 
 type Breakpoint = import('config/constants').Breakpoint
 
+type ButtonSize = import('components/Button').ButtonSize
+
+type ButtonVariant = import('components/Button').ButtonVariant
+
 type Chain = import('wagmi').Chain
 
 type ChainId = import('config/chains').ChainId
