@@ -30,7 +30,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "styles/preset.js"
+    "styles/preset.js",
+    "config/tailwindcss-preset/index.js"
   ],
   "exclude": ["node_modules"]
 }
