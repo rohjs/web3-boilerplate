@@ -22,6 +22,7 @@
     "hex-rgb": "^5.0.0",
     "jotai": "^2.2.3",
     "jotai-tanstack-query": "^0.7.1",
+    "lottie-react": "^2.4.0",
     "memoize-one": "^6.0.0",
     "mersenne-twister": "^1.1.0",
     "next": "13.4.12",
