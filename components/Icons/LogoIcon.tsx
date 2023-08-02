@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import clsx from 'clsx'
 
-import { assertUnreachable } from '@/utils/assertUnreachable'
+import { assertUnreachable } from 'utils/assertUnreachable'
 import { StyledIcon } from './styled'
 
 import BinanceIcon from 'public/icons/ic-binance.svg'
@@ -32,7 +32,7 @@ function LogoIcon({
   return (
     <StyledIcon
       className={clsx('cryptoIcon', icon, className)}
-      as={icon === 'walletConnect' ? 'span' : undefined}
+      as="span"
       aria-label={ariaLabel}
       aria-hidden={ariaHidden}
       $size={$size}
@@ -47,23 +47,23 @@ export default memo(LogoIcon)
 function renderSvgIcon(icon: LogoIconType) {
   switch (icon) {
     case 'binance':
-      return BinanceIcon
+      return <BinanceIcon />
     case 'bnb':
-      return BnbIcon
+      return <BnbIcon />
     case 'bsc':
-      return BscIcon
+      return <BscIcon />
     case 'coinbaseWallet':
-      return CoinbaseWalletIcon
+      return <CoinbaseWalletIcon />
     case 'ether':
-      return EtherIcon
+      return <EtherIcon />
     case 'metaMask':
-      return MetaMaskIcon
+      return <MetaMaskIcon />
     case 'planetarium':
-      return PlanetariumIcon
+      return <PlanetariumIcon />
     case 'trustWallet':
-      return TrustWalletIcon
+      return <TrustWalletIcon />
     case 'walletConnect':
-      return WalletConnectIcon
+      return <WalletConnectIcon />
     default:
       assertUnreachable(icon)
   }

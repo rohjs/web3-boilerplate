@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "@ethersproject/bytes": "^5.7.0",
+    "@svgr/webpack": "^8.0.1",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tanstack/eslint-plugin-query": "^4.32.1",
     "@tanstack/react-query-devtools": "^4.32.1",

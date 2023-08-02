@@ -20,6 +20,7 @@ export type IconSize = 16 | 24 | 32
 
 export type IconType =
   | 'allowlist'
+  | 'blockExplorer'
   | 'bscscan'
   | 'check'
   | 'calendar'
