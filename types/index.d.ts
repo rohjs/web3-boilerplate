@@ -43,6 +43,11 @@ type IconSize = import('components/Icons/types').IconSize
 
 type LogoIconType = import('components/Icons/types').LogoIconType
 
+type Modal = {
+  type: ModalType
+  props?: any
+}
+
 type ModalType = import('config/constants').ModalType
 
 type NumericValueType = 'token' | 'fiat' | 'percent'
