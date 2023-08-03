@@ -3,7 +3,7 @@ import type { ChainMap } from '../types'
 
 export const CONTRACT_ADDRESS: ChainMap<Hash> = {
   [ChainId.BSC]: '0x3874d012886c601bc413c1d487bc9033c4b82301',
-  [ChainId.BSC_TESTNET]: '0x846f38e0c7b3cc72a9545e4c249c5becb33df054',
+  [ChainId.BSC_TESTNET]: '0xe420d50b6a69ae128c1b6d8df301ea5e5fbb7ba6',
 }
 
 export const WNCG_ADDRESS: ChainMap<Hash> = {
